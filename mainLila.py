@@ -59,8 +59,8 @@ def check_sl_tp(client, initial_balance):
         close_position(client)
         return "stop_loss"
 
-    elif current_balance >= initial_balance * 2:
-        print("Điều kiện TakeProfit đạt được: Tài khoản gấp 2. Đóng lệnh.")
+    elif current_balance >= initial_balance * 1.8:
+        print("Điều kiện TakeProfit đạt được: Tài khoản gấp 1.8. Đóng lệnh.")
         close_position(client)
         return "take_profit"
     
@@ -72,7 +72,7 @@ def place_order(client, order_type):
     usdt_balance = get_account_balance(client)
     leverage = 125  # Set đòn bẩy 1
 
-    trading_balance = usdt_balance  * leverage * 0.7  # Giảm tỷ lệ xuống để đảm bảo đủ ký quỹ #Set volume
+    trading_balance = usdt_balance  * leverage * 0.8  # Giảm tỷ lệ xuống để đảm bảo đủ ký quỹ #Set volume
 
     ticker = client.get_symbol_ticker(symbol=symbol)
     btc_price = float(ticker['price'])
